@@ -17,7 +17,9 @@ public class CookieSession extends HttpServlet {
     public final static String LAST_NAME_PARAM = "lastName";
     public final static String AGE = "age";
     public final static String HEADER = "header";
-    static Person person;
+    public final static String SESSION = "session";
+    public final static String COOKIE = "cookie";
+    Person person;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, NumberFormatException {
@@ -28,7 +30,7 @@ public class CookieSession extends HttpServlet {
         String lastName;
         String age;
 
-        if (header.equals("cookie")) {
+        if (header.equals(COOKIE)) {
 
             firstName = getValueFrom(req, FIRST_NAME_PARAM);
             lastName = getValueFrom(req, LAST_NAME_PARAM);
@@ -38,7 +40,7 @@ public class CookieSession extends HttpServlet {
             saveCookie(resp, LAST_NAME_PARAM, lastName);
             saveCookie(resp, AGE, age);
 
-        } else if (header.equals("session")) {
+        } else if (header.equals(SESSION)) {
 
             HttpSession session = req.getSession();
 
