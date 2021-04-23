@@ -10,8 +10,9 @@
  </head>
  <body>
 
-    <% ArrayList<String> arr = AirportsData.getAirportsNames(); %>
-    <% Map<String, Airport> map = AirportsData.getAirports(); %>
+    <% AirportsData airportsData = new AirportsData(); %>
+    <% ArrayList<String> arr = airportsData.getAirportsNames(); %>
+    <% Map<String, Airport> map = airportsData.getAirports(); %>
 
     <table border="1">
        <caption><h2>Russian Airports</h2></caption>

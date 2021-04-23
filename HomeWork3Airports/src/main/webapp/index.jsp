@@ -9,7 +9,8 @@
    <meta charset="utf-8">
  </head>
  <body>
- <% ArrayList<String> airportsList = AirportsData.getAirportsNames(); %>
+ <% AirportsData airportsData = new AirportsData(); %>
+ <% ArrayList<String> airportsList = airportsData.getAirportsNames(); %>
  <% Collections.sort(airportsList); %>
 
     <h1>Find Flight Information</h1>

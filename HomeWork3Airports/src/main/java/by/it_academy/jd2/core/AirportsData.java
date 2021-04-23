@@ -7,17 +7,17 @@ import java.util.*;
 
 public class AirportsData {
 
-    private static Map<String, Airport> airports;
-    private static ArrayList<String> airportsNames;
+    private  Map<String, Airport> airports;
+    private  ArrayList<String> airportsNames;
 
-    public static Map<String, Airport> getAirports() throws SQLException, ClassNotFoundException {
-        if (airports == null) airports = createAirportsList();
-        return airports;
+    public Map<String, Airport> getAirports() throws SQLException, ClassNotFoundException {
+        this.airports = createAirportsList();
+        return this.airports;
     }
 
-    public static ArrayList<String> getAirportsNames() throws SQLException, ClassNotFoundException {
-        if (airportsNames == null) airportsNames = createAirportsNames();
-        return airportsNames;
+    public ArrayList<String> getAirportsNames() throws SQLException, ClassNotFoundException {
+        this.airportsNames = createAirportsNames();
+        return this.airportsNames;
     }
 
     private static Map<String, Airport> createAirportsList() throws SQLException, ClassNotFoundException {
