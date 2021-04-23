@@ -23,9 +23,9 @@
             <th>Departure date</th>
             <th>Arrival date</th>
            </tr>
-    <% int results = Pag.checkCountOfResults(request.getParameter("dateFrom"), request.getParameter("dateTo"),
+    <% int results = PaginationHelper.checkCountOfResults(request.getParameter("dateFrom"), request.getParameter("dateTo"),
                                            request.getParameter("airpDeparture"), request.getParameter("airpArrival"));
-    int pages = Pag.checkCountOfPages(results, 25); %>
+    int pages = PaginationHelper.checkCountOfPages(results, 25); %>
 
     <% Class.forName("org.postgresql.Driver");
             Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/demo", "postgres", "postgres");
