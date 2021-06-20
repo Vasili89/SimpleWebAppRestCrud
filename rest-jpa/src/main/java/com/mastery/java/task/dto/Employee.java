@@ -1,5 +1,7 @@
 package com.mastery.java.task.dto;
 
+import com.mastery.java.task.validation.MajorityAge;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
@@ -38,6 +40,7 @@ public class Employee implements Serializable {
     private Gender gender;
 
     @Column(name = "date_of_birth")
+    @MajorityAge(message = "Employee must be at least 18 years old.")
     private LocalDate dateOfBirth;
 
     public Long getEmployeeId() {
