@@ -16,10 +16,12 @@ public class EmployeeService {
 
     private final EmployeeDao employeeDao;
 
-    Logger logger = LoggerFactory.getLogger(EmployeeService.class);
+    private final static Logger logger = LoggerFactory.getLogger(EmployeeService.class);
 
     @Autowired
     public EmployeeService(EmployeeDao employeeDao) {
+        logger.info("This is INFO");
+        logger.debug("This is DEBUG");
         this.employeeDao = employeeDao;
     }
 
