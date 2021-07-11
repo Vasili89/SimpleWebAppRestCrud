@@ -6,6 +6,7 @@ import com.mastery.java.task.exception.EmployeeNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
@@ -20,8 +21,6 @@ public class EmployeeService {
 
     @Autowired
     public EmployeeService(EmployeeDao employeeDao) {
-        logger.info("This is INFO");
-        logger.debug("This is DEBUG");
         this.employeeDao = employeeDao;
     }
 
@@ -67,6 +66,13 @@ public class EmployeeService {
     public void validAndSave(@Valid Employee employee) {
         employeeDao.save(employee);
         logger.info("In EmployeeService updateEmployee with id {}", employee.getEmployeeId());
+    }
+
+    @JmsListener(destination = "employee-queue")
+    public void employeeMessageListener(Employee employee) {
+        logger.info("Message received! {}", employee);
+        employeeDao.save(employee);
+        logger.info("In EmployeeService createEmployee {}", employee);
     }
 
 }
