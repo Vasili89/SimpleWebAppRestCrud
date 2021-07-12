@@ -26,7 +26,7 @@ public class EmployeeControllerAsync {
 
     @PostMapping
     public Employee createEmployee(@Valid @RequestBody Employee employee) {
-        employeeService.employeeMessageListener(employee);
+        jmsTemplate.convertAndSend("employee-queue", employee);
         return employee;
     }
 
