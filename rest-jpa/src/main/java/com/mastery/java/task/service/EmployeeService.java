@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
@@ -69,10 +70,12 @@ public class EmployeeService {
     }
 
     @JmsListener(destination = "employee-queue")
-    public void employeeMessageListener(Employee employee) {
+    @SendTo("employee-queue-answer")
+    public String employeeMessageListener(Employee employee) {
         logger.info("Message received! {}", employee);
         employeeDao.save(employee);
         logger.info("In EmployeeService createEmployee {}", employee);
+        return "employeeMessageListener got: " + employee;
     }
 
 }
