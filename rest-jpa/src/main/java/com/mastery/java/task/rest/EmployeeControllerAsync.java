@@ -15,12 +15,10 @@ import javax.validation.Valid;
 @RequestMapping("/employee-async")
 public class EmployeeControllerAsync {
 
-    private final EmployeeService employeeService;
     private final JmsTemplate jmsTemplate;
 
     @Autowired
-    public EmployeeControllerAsync(EmployeeService employeeService, JmsTemplate jmsTemplate) {
-        this.employeeService = employeeService;
+    public EmployeeControllerAsync(JmsTemplate jmsTemplate) {
         this.jmsTemplate = jmsTemplate;
     }
 
